@@ -16,7 +16,7 @@ def paginate_books(request,selection):
 
 class TaskById(Resource):
 
-    #R
+    #READ FOR SEARCH OPERATION
     def get(self):
         logger.debug("GET method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)

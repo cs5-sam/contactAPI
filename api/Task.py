@@ -16,13 +16,13 @@ def paginate_books(request,selection):
 
 class Task(Resource):
 
-    #R
+    #READ ALL CONTACT
     def get(self):
         logger.debug("GET method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)
         c = conn.cursor()
         args = request.args
-        all_data = c.execute("SELECT * FROM contact",).fetchall()
+        all_data = c.execute("SELECT * FROM contact").fetchall()
         if len(all_data) != 0:
             list_data = []
             for row in all_data:
@@ -33,7 +33,7 @@ class Task(Resource):
             return {"success":False,
             "message":"Contact Not Found"}, 200
     
-    #C
+    #CREATE NEW CONTACT
     def post(self):
         logger.debug("POST method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)
@@ -48,7 +48,7 @@ class Task(Resource):
             conn.commit()
             return {"message":"Contact Created"}, 200
     
-    #U
+    #UPDATE EXISTING CONTACT
     def put(self):
         logger.debug("PUT method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)
@@ -58,7 +58,7 @@ class Task(Resource):
         conn.commit()
         return {"message":"Contact Updated"}, 200
     
-    #D
+    #DELETE CONTACT
     def delete(self):
         logger.debug("DELETE method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)
