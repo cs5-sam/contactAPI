@@ -58,7 +58,7 @@ class Task(Resource):
         conn.commit()
         return {"message":"Contact Updated"}, 200
     
-    #DELETE CONTACT
+    #DELETE
     def delete(self):
         logger.debug("DELETE method")
         conn = sqlite3.connect("task.sqlite3", check_same_thread=False)
